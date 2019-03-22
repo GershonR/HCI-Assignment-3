@@ -37,24 +37,6 @@
     <script src="lib/hammer/hammer.min.js"></script>
     <script src="lib/tindercardsjs/tindercards.js"></script>
     
-    <script>
-      $(document).ready(function () {
-        
-        // Define cards
-        var cards = [
-          new Tindercardsjs.card(2, 'Slack', 'Eric posted in Softeng2 #help: How do I push to master?', 'gfx/pics/slack.jpg'),
-          new Tindercardsjs.card(1, 'Twitter', 'Isham posted: free pizza at UC', 'gfx/pics/twitter.jpg'),
-          new Tindercardsjs.card(0, 'Messenger', 'Eric said: I suck', 'gfx/pics/messenger.png')
-        ];
-        
-        // Render cards
-        Tindercardsjs.render(cards, $('#main'), function (event) {
-          console.log('Swiped ' + event.direction + ', cardid is ' + event.cardid + ' and target is:');
-          console.log(event.card);
-        });
-      });
-    </script>
-    
   </body>
   
 </html>
