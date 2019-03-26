@@ -25,13 +25,123 @@
         left:50%;
         margin-left:-160px;
       }
+
+      .wrap{
+        text-align: center;
+      }
+
+      .button{
+        border: none;
+        padding: 100px;
+        text-align: center;
+        background-color: #00ff00;
+      }
+
+      .setting_img{
+        border: 2px solid black;
+        height: 50px;
+        width: 50px;
+      }
+
+      .setting_elements{
+        display: none;
+        text-align: center;
+      }
+      
+      .settings_header_msg{
+        text-align: center;
+      }
+
+      #btn_text{
+        font-size: 30px;
+        font-style: bold;
+        color: red;
+      }
+
+      #return_from_cards{
+        display: none;
+      }
+
+      hr{
+         width: 35%;
+      }
+
+      li{
+        list-style-type: none;
+      }
+
     </style>
     
   </head>
   
   <body>
-    
+    <div class="wrap">
+      <button class="button" id="settings" type="button" onclick="show_settings()">
+        <p id="btn_text">show settings</p>
+      </button>
+      <button class="button" id="b_show_cards" type="button" onclick="show_cards()">
+       <p id="btn_text">show cards</p>
+      </button>
+    </div>
+
+    <div class="setting_elements" id="setting_elements">
+      <p id="settings_header_msg">
+        <b>Priority List</b><br>
+        Higher priority will display first<br>
+        Same priority will display in arbitrary order<br>
+      </p>
+      <ul id="setting_list">
+        <li>
+          <img src="gfx/pics/gmail.png" class="setting_img" id="gmail">
+          <input type="number" id="priority_gmail" min="0" max="7" value="7">
+          <hr>
+        </li>
+        <li>
+          <img src="gfx/pics/discord.png" class="setting_img" id="discord">
+          <input type="number" id="priority_discord" min="0" max="7" value="6">
+          <hr>
+        </li>
+        <li>
+          <img src="gfx/pics/text.png" class="setting_img" id="text">
+          <input type="number" id="priority_text" min="0" max="7" value="5">
+          <hr>
+        </li>
+        <li>
+          <img src="gfx/pics/snapchat.png" class="setting_img" id="snapchat">
+          <input type="number" id="priority_snapchat" min="0" max="7" value="4">
+          <hr>
+        </li>
+        <li>
+          <img src="gfx/pics/facebook.png" class="setting_img" id="facebook">
+          <input type="number" id="priority_facebook" min="0" max="7" value="3">
+          <hr>
+        </li>
+        <li>
+          <img src="gfx/pics/slack.png" class="setting_img" id="slack">
+          <input type="number" id="priority_slack" min="0" max="7" value="2">
+          <hr>
+        </li>
+        <li>
+          <img src="gfx/pics/twitter.png" class="setting_img" id="twitter">
+          <input type="number" id="priority_twitter" min="0" max="7" value="1">
+          <hr>
+        </li>
+        <li>
+          <img src="gfx/pics/messenger.png" class="setting_img" id="messenger">
+          <input type="number" id="priority_messenger" min="0" max="7" value="0">
+          <hr>
+        </li>
+        <li>
+          <button id="setting_submit" type="button" onclick="settings_change()">Change Settings</button>
+        </li>
+      </ul>
+    </div>
+
     <div id="main"></div>
+
+    <div id="below_main" class="wrap">
+      <button id="return_from_cards" type="button" onclick="return_from_cards()">return to main page</button>
+    </div>
     
     <script src="lib/jquery/jquery.min.js"></script>
     <script src="lib/hammer/hammer.min.js"></script>
