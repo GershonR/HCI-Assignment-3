@@ -6,7 +6,8 @@
     <title>Notifier</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
     <style>
       
       body{
@@ -28,19 +29,22 @@
 
       .wrap{
         text-align: center;
+        display: none;
       }
 
       .button{
-        border: none;
-        padding: 100px;
+        display: inline-block;
         text-align: center;
-        background-color: #00ff00;
+        background-color: #f2f2f2;
+        margin-bottom: 50px;
+        width: 75%;
       }
 
       .setting_img{
-        border: 2px solid black;
+        border: 0px;
         height: 50px;
         width: 50px;
+        margin-right: 50px;
       }
 
       .setting_elements{
@@ -52,14 +56,36 @@
         text-align: center;
       }
 
+      .setting_btn{
+        margin-bottom: 25px;
+        margin-right: 50px;
+      }
+
       #btn_text{
+        font: Helvetica;
         font-size: 30px;
         font-style: bold;
-        color: red;
+        color: black;
       }
 
       #return_from_cards{
         display: none;
+      }
+
+      #page_title{
+        background-color: #09f768;
+        color: blue;
+        font-size: 50px;
+        font-family: 'Indie Flower', cursive;
+      }
+
+      #below_main, #fake_home_screen{
+        text-align: center;
+      }
+
+      #fake_background{
+        width: 50%;
+        height: 50%;
       }
 
       hr{
@@ -75,12 +101,17 @@
   </head>
   
   <body>
-    <div class="wrap">
-      <button class="button" id="settings" type="button" onclick="show_settings()">
-        <p id="btn_text">show settings</p>
+    <div id="fake_home_screen" width="device.width">
+      <img src="gfx/pics/home_screen.jpg" id="fake_background" onclick="show_app()"></img>
+    </div>
+
+    <div id="wrap" class="wrap">
+      <p id="page_title">Notifier <i class="fas fa-bell"></i></p>
+      <button class="button" id="b_show_cards" type="button" onclick="show_notifications()">
+       <p id="btn_text">Notifications <i class="fas fa-exclamation"></i></p>
       </button>
-      <button class="button" id="b_show_cards" type="button" onclick="show_cards()">
-       <p id="btn_text">show cards</p>
+      <button class="button" id="settings" type="button" onclick="show_settings()">
+        <p id="btn_text">Settings <i class="fas fa-cog"></i></p>
       </button>
     </div>
 
@@ -93,54 +124,36 @@
       <ul id="setting_list">
         <li>
           <img src="gfx/pics/gmail.png" class="setting_img" id="gmail">
-          <input type="number" id="priority_gmail" min="0" max="7" value="7">
-          <hr>
-        </li>
-        <li>
-          <img src="gfx/pics/discord.png" class="setting_img" id="discord">
-          <input type="number" id="priority_discord" min="0" max="7" value="6">
-          <hr>
+          <img src="gfx/pics/discord.png" class="setting_img" id="discord"><br>
+          <input type="number" class="setting_btn" id="priority_gmail" min="0" max="7" value="7">
+          <input type="number" class="setting_btn" id="priority_discord" min="0" max="7" value="6">
         </li>
         <li>
           <img src="gfx/pics/text.png" class="setting_img" id="text">
-          <input type="number" id="priority_text" min="0" max="7" value="5">
-          <hr>
-        </li>
-        <li>
-          <img src="gfx/pics/snapchat.png" class="setting_img" id="snapchat">
-          <input type="number" id="priority_snapchat" min="0" max="7" value="4">
-          <hr>
+          <img src="gfx/pics/snapchat.png" class="setting_img" id="snapchat"><br>
+          <input type="number" class="setting_btn" id="priority_text" min="0" max="7" value="5">
+          <input type="number" class="setting_btn" id="priority_snapchat" min="0" max="7" value="4">
         </li>
         <li>
           <img src="gfx/pics/facebook.png" class="setting_img" id="facebook">
-          <input type="number" id="priority_facebook" min="0" max="7" value="3">
-          <hr>
-        </li>
-        <li>
-          <img src="gfx/pics/slack.png" class="setting_img" id="slack">
-          <input type="number" id="priority_slack" min="0" max="7" value="2">
-          <hr>
+          <img src="gfx/pics/slack.png" class="setting_img" id="slack"><br>
+          <input type="number" class="setting_btn" id="priority_facebook" min="0" max="7" value="3">
+          <input type="number" class="setting_btn" id="priority_slack" min="0" max="7" value="2">
         </li>
         <li>
           <img src="gfx/pics/twitter.png" class="setting_img" id="twitter">
-          <input type="number" id="priority_twitter" min="0" max="7" value="1">
-          <hr>
-        </li>
-        <li>
-          <img src="gfx/pics/messenger.png" class="setting_img" id="messenger">
-          <input type="number" id="priority_messenger" min="0" max="7" value="0">
-          <hr>
-        </li>
-        <li>
-          <button id="setting_submit" type="button" onclick="settings_change()">Change Settings</button>
+          <img src="gfx/pics/messenger.png" class="setting_img" id="messenger"><br>
+          <input type="number" class="setting_btn" id="priority_twitter" min="0" max="7" value="1">
+          <input type="number" class="setting_btn" id="priority_messenger" min="0" max="7" value="0">
         </li>
       </ul>
+      <p style="text-align: center"><button id="setting_submit" type="button" onclick="save_setting_changes()">Save Changes</button></p>
     </div>
 
     <div id="main"></div>
 
-    <div id="below_main" class="wrap">
-      <button id="return_from_cards" type="button" onclick="return_from_cards()">return to main page</button>
+    <div id="below_main">
+      <button id="return_from_cards" type="button" onclick="return_from_notifications()">return to main page</button>
     </div>
     
     <script src="lib/jquery/jquery.min.js"></script>
